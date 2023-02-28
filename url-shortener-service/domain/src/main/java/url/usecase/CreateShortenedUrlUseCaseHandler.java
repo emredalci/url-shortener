@@ -16,16 +16,16 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class CreateShortenedUrlUseCaseHandler implements UseCaseHandler<String, CreateShortenedUrl> {
 
-    public static final String ALGORITHM = "MD5"; //TODO: application.yml dan al
+    public static final String ALGORITHM = "MD5";
 
     private final UserPort userPort;
     private final UrlPort urlPort;
 
     @Override
     public String handler(CreateShortenedUrl useCase) {
-        Long userId = userPort.getUserId(useCase.email());
+        userPort.isExistUser(useCase.userId());
         String shortened = getShortened(useCase);
-        urlPort.saveUrl(new Url(userId, useCase.url(), shortened));
+        urlPort.saveUrl(new Url(useCase.userId(), useCase.url(), shortened));
         return shortened;
     }
 
@@ -35,7 +35,7 @@ public class CreateShortenedUrlUseCaseHandler implements UseCaseHandler<String, 
         try {
             messageDigest = MessageDigest.getInstance(ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e); //TODO: Özelleştirilmiş exception yaz.
+            throw new RuntimeException(e);
         }
         byte[] bytes = messageDigest.digest(useCase.url().getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(bytes).substring(0,6);

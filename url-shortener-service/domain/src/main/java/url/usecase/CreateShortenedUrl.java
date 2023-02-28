@@ -1,6 +1,9 @@
 package url.usecase;
 
 import common.model.UseCase;
+import lombok.Builder;
 
-public record CreateShortenedUrl(String email, String url) implements UseCase {
+@Builder
+public record CreateShortenedUrl(long userId, String url) implements UseCase {
+
 }
