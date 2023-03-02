@@ -42,8 +42,8 @@ class CreateShortenedUrlUseCaseHandlerTest {
                 .build();
         String expectedErrorMessage = "Error";
         //WHEN
-        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> useCaseHandler.handler(useCase));
         //THEN
+        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> useCaseHandler.handler(useCase));
         Assertions.assertEquals(exception.getMessage(), expectedErrorMessage);
     }
 

@@ -11,6 +11,7 @@ public class FakeUrlPort implements UrlPort{
 
     @Override
     public String retrieveLongUrl(String shortened) {
-        return null;
+        if (shortened.equals("abc")) return "http://google.com";
+        else throw new RuntimeException("Error");
     }
 }
