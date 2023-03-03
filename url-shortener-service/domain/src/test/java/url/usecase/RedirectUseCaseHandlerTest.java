@@ -1,10 +1,12 @@
 package url.usecase;
 
+import com.example.url.usecase.Redirect;
+import com.example.url.usecase.RedirectUseCaseHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import url.port.FakeUrlPort;
-import url.port.UrlPort;
+import com.example.url.port.UrlPort;
 
 class RedirectUseCaseHandlerTest {
 

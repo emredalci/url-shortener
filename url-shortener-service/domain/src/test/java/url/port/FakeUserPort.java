@@ -1,6 +1,6 @@
 package url.port;
 
-import user.port.UserPort;
+import com.example.user.port.UserPort;
 
 public class FakeUserPort implements UserPort {
 

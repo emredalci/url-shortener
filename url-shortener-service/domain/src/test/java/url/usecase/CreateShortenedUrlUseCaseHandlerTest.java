@@ -1,13 +1,15 @@
 package url.usecase;
 
 
+import com.example.url.usecase.CreateShortenedUrl;
+import com.example.url.usecase.CreateShortenedUrlUseCaseHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import url.port.FakeUrlPort;
 import url.port.FakeUserPort;
-import url.port.UrlPort;
-import user.port.UserPort;
+import com.example.url.port.UrlPort;
+import com.example.user.port.UserPort;
 
 class CreateShortenedUrlUseCaseHandlerTest {
 

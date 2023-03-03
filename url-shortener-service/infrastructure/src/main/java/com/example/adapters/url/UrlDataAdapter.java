@@ -1,18 +1,18 @@
-package url.port;
+package com.example.adapters.url;
 
 import com.example.url.model.Url;
 import com.example.url.port.UrlPort;
+import org.springframework.stereotype.Service;
 
-public class FakeUrlPort implements UrlPort {
-
+@Service
+public class UrlDataAdapter implements UrlPort {
     @Override
     public void saveUrl(Url url) {
-        return;
+
     }
 
     @Override
     public String retrieveLongUrl(String shortened) {
-        if (shortened.equals("abc")) return "http://google.com";
-        else throw new RuntimeException("Error");
+        return null;
     }
 }
