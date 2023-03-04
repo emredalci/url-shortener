@@ -29,7 +29,7 @@ public class UrlDataAdapter implements UrlPort {
     public String retrieveLongUrl(String shortened) {
         return urlRepository.findByShortened(shortened)
                 .map(UrlEntity::getUrl)
-                .orElseThrow(() -> new UrlNotFoundException("Error"));
+                .orElseThrow(() -> new UrlNotFoundException("url.not.found.error"));
 
     }
 }

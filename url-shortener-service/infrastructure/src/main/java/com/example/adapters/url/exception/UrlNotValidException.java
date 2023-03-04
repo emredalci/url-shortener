@@ -1,12 +1,16 @@
 package com.example.adapters.url.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import lombok.Getter;
+import lombok.Setter;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
+
+@Getter
+@Setter
 public class UrlNotValidException extends RuntimeException{
 
-    public UrlNotValidException(String message) {
-        super(message);
+    private final String key;
+
+    public UrlNotValidException(String key) {
+        this.key = key;
     }
 }

@@ -10,7 +10,7 @@ public record CreateShortenedUrlRequest(@NotBlank @JsonProperty("url") String ur
     public void validateUrl(){
         boolean valid = UrlValidator.getInstance().isValid(url);
         if (valid) return;
-        throw new UrlNotValidException("Error");
+        throw new UrlNotValidException("url.request.error");
     }
 
 }

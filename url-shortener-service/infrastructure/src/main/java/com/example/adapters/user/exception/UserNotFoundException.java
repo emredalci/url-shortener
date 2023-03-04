@@ -1,8 +1,16 @@
 package com.example.adapters.user.exception;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class UserNotFoundException extends RuntimeException{
 
-    public UserNotFoundException(String message) {
-        super(message);
+    private final String key;
+
+    public UserNotFoundException(String key) {
+        super(key);
+        this.key=key;
     }
 }
