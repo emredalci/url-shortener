@@ -16,7 +16,8 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class CreateShortenedUrlUseCaseHandler implements UseCaseHandler<String, CreateShortenedUrl> {
 
-    public static final String ALGORITHM = "MD5";
+    private static final String ALGORITHM = "MD5";
+    private static final String REGEX_FOR_REPLACE = "/";
 
     private final UserPort userPort;
     private final UrlPort urlPort;
@@ -38,6 +39,6 @@ public class CreateShortenedUrlUseCaseHandler implements UseCaseHandler<String, 
             throw new RuntimeException(e);
         }
         byte[] bytes = messageDigest.digest(useCase.url().getBytes(StandardCharsets.UTF_8));
-        return Base64.getEncoder().encodeToString(bytes).substring(0,6);
+        return Base64.getEncoder().encodeToString(bytes).replace(REGEX_FOR_REPLACE, "").substring(0,6);
     }
 }

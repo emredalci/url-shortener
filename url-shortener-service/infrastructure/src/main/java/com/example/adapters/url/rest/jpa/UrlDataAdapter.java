@@ -8,8 +8,6 @@ import com.example.url.port.UrlPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class UrlDataAdapter implements UrlPort {
@@ -30,7 +28,7 @@ public class UrlDataAdapter implements UrlPort {
     @Override
     public String retrieveLongUrl(String shortened) {
         return urlRepository.findByShortened(shortened)
-                .map(UrlEntity::getShortened)
+                .map(UrlEntity::getUrl)
                 .orElseThrow(() -> new UrlNotFoundException("Error"));
 
     }

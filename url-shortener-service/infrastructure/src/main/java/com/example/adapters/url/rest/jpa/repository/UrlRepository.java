@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface UrlRepository extends JpaRepository<UrlEntity, Long> {
 
     Optional<UrlEntity> findByShortened(String shortened);
+
 }
