@@ -15,6 +15,6 @@ public class UserFakeDataAdapter implements UserPort {
         if (id == 1){
             return;
         }
-        throw new UserNotFoundException("url.not.found.error");
+        throw new UserNotFoundException("user.not.found.error");
     }
 }
