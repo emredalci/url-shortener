@@ -9,3 +9,4 @@ The project was created for applying **hexagonal architecture**.
 * Postgres
 * Prometheus
 * Grafana
+* Testcontainer
