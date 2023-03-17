@@ -1,5 +1,6 @@
 package url.port;
 
+import com.example.user.exception.UserNotFoundException;
 import com.example.user.port.UserPort;
 
 public class FakeUserPort implements UserPort {
@@ -9,6 +10,6 @@ public class FakeUserPort implements UserPort {
         if (id == 1){
             return;
         }
-        throw new RuntimeException("Error"); //TODO: Özelleştirilmiş exvception yazılacak
+        throw new UserNotFoundException("user.not.found.error");
     }
 }

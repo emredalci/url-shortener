@@ -3,6 +3,7 @@ package url.usecase;
 
 import com.example.url.usecase.CreateShortenedUrl;
 import com.example.url.usecase.CreateShortenedUrlUseCaseHandler;
+import com.example.user.exception.UserNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,10 +43,10 @@ class CreateShortenedUrlUseCaseHandlerTest {
                 .userId(2)
                 .url("http://google.com")
                 .build();
-        String expectedErrorMessage = "Error";
+        String expectedErrorMessage = "user.not.found.error";
         //WHEN
         //THEN
-        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> useCaseHandler.handler(useCase));
+        UserNotFoundException exception = Assertions.assertThrows(UserNotFoundException.class, () -> useCaseHandler.handler(useCase));
         Assertions.assertEquals(exception.getMessage(), expectedErrorMessage);
     }
 

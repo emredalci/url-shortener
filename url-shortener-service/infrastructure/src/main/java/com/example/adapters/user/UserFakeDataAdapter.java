@@ -1,6 +1,6 @@
 package com.example.adapters.user;
 
-import com.example.adapters.user.exception.UserNotFoundException;
+import com.example.user.exception.UserNotFoundException;
 import com.example.user.port.UserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

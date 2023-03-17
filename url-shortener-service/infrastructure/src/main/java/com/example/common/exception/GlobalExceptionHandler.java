@@ -2,7 +2,7 @@ package com.example.common.exception;
 
 import com.example.adapters.url.exception.UrlNotFoundException;
 import com.example.adapters.url.exception.UrlNotValidException;
-import com.example.adapters.user.exception.UserNotFoundException;
+import com.example.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
