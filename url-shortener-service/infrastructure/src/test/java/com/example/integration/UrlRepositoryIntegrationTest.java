@@ -1,8 +1,8 @@
 package com.example.integration;
 
-import com.example.adapters.url.exception.UrlNotFoundException;
 import com.example.adapters.url.rest.jpa.entity.UrlEntity;
 import com.example.adapters.url.rest.jpa.repository.UrlRepository;
+import com.example.common.exception.BusinessException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ class UrlRepositoryIntegrationTest extends AbstractTestContainersIT{
         //WHEN
         String actual = urlRepository.findByShortened(shortened)
                 .map(UrlEntity::getUrl)
-                .orElseThrow(() -> new UrlNotFoundException("url.not.found.error"));
+                .orElseThrow(() -> new BusinessException("url.not.found.error"));
         //THEN
         Assertions.assertTrue(POSTGRES_SQL_CONTAINER.isRunning());
         Assertions.assertEquals(expected, actual);

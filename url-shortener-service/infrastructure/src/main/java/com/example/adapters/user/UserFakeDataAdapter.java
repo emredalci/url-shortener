@@ -1,6 +1,6 @@
 package com.example.adapters.user;
 
-import com.example.user.exception.UserNotFoundException;
+import com.example.common.exception.BusinessException;
 import com.example.user.port.UserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ public class UserFakeDataAdapter implements UserPort {
         if (id == 1){
             return;
         }
-        throw new UserNotFoundException("user.not.found.error");
+        throw new BusinessException("user.not.found.error");
     }
 }

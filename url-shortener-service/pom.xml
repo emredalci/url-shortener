@@ -25,6 +25,7 @@
 
         <lombok.version>1.18.26</lombok.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <commons-validator.version>1.7</commons-validator.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,11 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${commons-validator.version}</version>
         </dependency>
     </dependencies>
 

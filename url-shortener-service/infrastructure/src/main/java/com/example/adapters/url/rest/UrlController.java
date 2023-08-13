@@ -23,11 +23,7 @@ public class UrlController {
 
     @PostMapping("/user/{userId}/url/create")
     public ResponseEntity<String> create(@PathVariable Long userId, @RequestBody @Valid CreateShortenedUrlRequest urlRequest) {
-        urlRequest.validateUrl();
-        String shortenedUrl = createShortenedUrlUseCaseHandler.handler(CreateShortenedUrl.builder()
-                .userId(userId)
-                .url(urlRequest.url())
-                .build());
+        String shortenedUrl = createShortenedUrlUseCaseHandler.handler(new CreateShortenedUrl(userId, urlRequest.url()));
         return ResponseEntity.ok(shortenedUrl);
     }
 

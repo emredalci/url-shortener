@@ -1,6 +1,6 @@
 package url.port;
 
-import com.example.user.exception.UserNotFoundException;
+import com.example.common.exception.BusinessException;
 import com.example.user.port.UserPort;
 
 public class FakeUserPort implements UserPort {
@@ -10,6 +10,6 @@ public class FakeUserPort implements UserPort {
         if (id == 1){
             return;
         }
-        throw new UserNotFoundException("user.not.found.error");
+        throw new BusinessException("user.not.found.error");
     }
 }

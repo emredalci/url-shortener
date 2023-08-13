@@ -1,8 +1,5 @@
 package com.example.common.exception;
 
-import com.example.adapters.url.exception.UrlNotFoundException;
-import com.example.adapters.url.exception.UrlNotValidException;
-import com.example.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -48,25 +45,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    @ExceptionHandler(UrlNotValidException.class)
-    public ResponseEntity<String> handle(UrlNotValidException ex, Locale locale){
-        log.debug("Url not valid. Message : {}", ex.getMessage());
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<String> handle(BusinessException ex, Locale locale){
+        log.debug("Exception occurred. Message : {}", ex.getMessage());
         List<String> requiredFieldErrorMessages = retrieveLocalizationMessage(ex.getKey(), locale);
         return new ResponseEntity<>(requiredFieldErrorMessages.get(1), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(UrlNotFoundException.class)
-    public ResponseEntity<String> handle(UrlNotFoundException ex, Locale locale){
-        log.error("Url not found. Message : {}", ex.getMessage());
-        List<String> requiredFieldErrorMessages = retrieveLocalizationMessage(ex.getKey(), locale);
-        return new ResponseEntity<>(requiredFieldErrorMessages.get(1), HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String> handle(UserNotFoundException ex, Locale locale){
-        log.error("User not found. Message : {}", ex.getMessage());
-        List<String> requiredFieldErrorMessages = retrieveLocalizationMessage(ex.getKey(), locale);
-        return new ResponseEntity<>(requiredFieldErrorMessages.get(1), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)

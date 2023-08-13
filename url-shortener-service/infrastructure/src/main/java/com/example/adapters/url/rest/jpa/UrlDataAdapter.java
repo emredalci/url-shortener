@@ -1,9 +1,9 @@
 package com.example.adapters.url.rest.jpa;
 
-import com.example.adapters.url.exception.UrlNotFoundException;
 import com.example.adapters.url.rest.jpa.entity.UrlEntity;
 import com.example.adapters.url.rest.jpa.repository.UrlRepository;
 import com.example.common.enums.CacheNames;
+import com.example.common.exception.BusinessException;
 import com.example.url.model.Url;
 import com.example.url.port.UrlPort;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +34,7 @@ public class UrlDataAdapter implements UrlPort {
     public String retrieveLongUrl(String shortened) {
         return urlRepository.findByShortened(shortened)
                 .map(UrlEntity::getUrl)
-                .orElseThrow(() -> new UrlNotFoundException("url.not.found.error"));
+                .orElseThrow(() -> new BusinessException("url.not.found.error"));
 
     }
 }
